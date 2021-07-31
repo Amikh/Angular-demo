@@ -5,15 +5,31 @@ import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
+export class Friend {
 
-export class Product {
   constructor(
     public id: number,
-    public name: string,
-    public price: number
-    ) {
-   }
+    public price: number,
+    public name: string
+  ) {
+  }
 }
+export class Product {
+
+  constructor(
+    public name: string
+  ) {
+  }
+}
+ 
+export class Sla {
+
+  constructor(
+    public num: number
+  ) {
+  }
+}
+
 
 
 
@@ -27,48 +43,73 @@ export class Product {
 
 @Injectable()
 export class AppComponent {
-  title = 'sample-angular-app';
+  [x: string]: any;
+  
+  frends: Friend[] = [];
+  prod: Product[] = [];
+  arnum: Sla[] = [];
 
-   private REST_API_SERVER = "http://localhost:8080/product";
-
-   constructor(private http: HttpClient) { }
-   httpHeader = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }  
+  
+  private REST_API_SERVER = "http://localhost:8080/";
 
 
   
-  // isGetProduct() : boolean{
-  //     this.http.get(this.REST_API_SERVER).subscribe(data => {
-  //     console.log(data);
-  //   },
-  //     error => {
-  //         console.log('Log the error here: ', error);
-  //     });
-  //   return false;
-  // }
+   constructor(private http: HttpClient) { }
+    httpHeader = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }  
+
+
   
 
     isGetProduct() : boolean{
-      this.http.get(this.REST_API_SERVER).subscribe(data => {
-      console.log(data);
-
-
-    },
-      error => {
-          console.log('Log the error here: ', error);
-      });
-
-
-
-
+      console.log("HOHOHOHOHO");
+      this.http.get<any>(this.REST_API_SERVER+"product").subscribe(
+        response => {
+          console.log(response);
+          this.friends = response;
+        }
+      );
+    
     return false;
   }
 
+ isGetProduct1() : boolean{
+      console.log("HOHOHOHOHO");
+      this.http.get<any>(this.REST_API_SERVER+"product").subscribe(
+        response => {
+          console.log(response);
+          this.prod = response;
+        }
+      );
     
+    return false;
+  }
+
+
+  isSla() : boolean{
+
+
+    console.log("HOHOHOHOHO");
+    this.http.get<any>("http://localhost:8080/sla").subscribe(
+      response => {
+        console.log( "Response number : "+response);
+        var aa = response;
+        let customObj = new Sla(aa);
+        customObj.num = aa; 
+        this.arnum.push(customObj); 
+         
+
+      }
+    );
   
+  return false;
+}
+
+
+
 
 
   }
