@@ -16,28 +16,56 @@
 </header>
 
 <section>
-  <nav>
+ 
     <ul>
       <li><p> The function return response with random delay between 1 to 10 seconds </p></li>
-      <li><a href (click)="isGetProduct()"> Link # 1</a></li>
+      <li><a href (click)="isSla()"> Link # 1</a></li>
+
       <li><p> The function check a data base connection</p></li>
-      <li><a href (click)="isGetProduct1()">Link # 2 </a></li>
-      <li><p> The function 3</p></li>
+      <li><a href (click)="isGetProduct()">Link # 2 </a></li> 
+
+      <!-- <li><p> The function 3</p></li>
       <li><a href (click)="isSla()"> Link # 3</a></li>
       <li><p> The function 4</p></li>
       <li><a href (click)="isGetProduct()"> Link # 4</a></li>
       <li><p> The function 5</p></li>
-      <li><a href (click)="isGetProduct()"> Link # 5</a></li>
+      <li><a href (click)="isGetProduct()"> Link # 5</a></li>  -->
 
     </ul>
-  </nav>
-
   
-  <article id=ar>
 
-    <table class="table table-bordered table-striped">
+ 
 
-      <tbody>
+  <div data-ng-app="demo">
+    <div data-ng-controller="MainController">
+
+   
+
+    <ul when-scrolled="more()" class="hello">
+      <li *ngFor="let arnum of arnum;">
+        <span>link #1 : {{arnum.num}}</span>
+      </li>
+    
+      <li *ngFor="let friend of friends;">
+        <span>link #2 : {{friend.id}}</span>
+      </li>
+
+    </ul>
+
+ 
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+    <!-- <table class="table table-bordered table-striped">
+
+   <tbody>
       <tr *ngFor="let friend of friends">
         <td><span>link #1 : </span></td>
         <td><span>{{friend.id}}</span></td>
@@ -54,9 +82,10 @@
       </tr> 
       </tbody>
     </table>
+    </table> -->
 
  
-  </article>
+
 </section>
 
 <footer>

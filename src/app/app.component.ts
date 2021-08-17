@@ -14,6 +14,7 @@ export class Friend {
   ) {
   }
 }
+
 export class Product {
 
   constructor(
@@ -90,9 +91,6 @@ export class AppComponent {
 
 
   isSla() : boolean{
-
-
-    console.log("HOHOHOHOHO");
     this.http.get<any>("http://localhost:8080/sla").subscribe(
       response => {
         console.log( "Response number : "+response);
@@ -100,8 +98,8 @@ export class AppComponent {
         let customObj = new Sla(aa);
         customObj.num = aa; 
         this.arnum.push(customObj); 
-         
-
+        
+      
       }
     );
   
@@ -109,6 +107,12 @@ export class AppComponent {
 }
 
 
+
+
+
+
+  
+      
 
 
 
